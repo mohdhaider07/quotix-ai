@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Webcrumbs Plugin</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
+        @import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
+        @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
+        @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
+
+        /*! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com*/
+        *,
+        :after,
+        :before {
+            border: 0 solid #e5e7eb;
+            box-sizing: border-box;
+        }
+
+        :after,
+        :before {
+            --tw-content: "";
+        }
+
+        :host,
+        html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            font-family:
+                Open Sans,
+                ui-sans-serif,
+                system-ui,
+                sans-serif,
+                Apple Color Emoji,
+                Segoe UI Emoji,
+                Segoe UI Symbol,
+                Noto Color Emoji;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            line-height: inherit;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            min-width: 100vw;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffffff, #d4d4d4);
+        }
+
+        hr {
+            border-top-width: 1px;
+            color: inherit;
+            height: 0;
+        }
+
+        abbr:where([title]) {
+            text-decoration: underline dotted;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: inherit;
+            font-weight: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+
+        b,
+        strong {
+            font-weight: bolder;
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family:
+                ui-monospace,
+                SFMono-Regular,
+                Menlo,
+                Monaco,
+                Consolas,
+                Liberation Mono,
+                Courier New,
+                monospace;
+            font-feature-settings: normal;
+            font-size: 1em;
+            font-variation-settings: normal;
+        }
+
+        small {
+            font-size: 80%;
+        }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+        }
+
+        sub {
+            bottom: -0.25em;
+        }
+
+        sup {
+            top: -0.5em;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-color: inherit;
+            text-indent: 0;
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            color: inherit;
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-size: 100%;
+            font-variation-settings: inherit;
+            font-weight: inherit;
+            letter-spacing: inherit;
+            line-height: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        button,
+        select {
+            text-transform: none;
+        }
+
+        button,
+        input:where([type="button"]),
+        input:where([type="reset"]),
+        input:where([type="submit"]) {
+            -webkit-appearance: button;
+            background-color: transparent;
+            background-image: none;
+        }
+
+        :-moz-focusring {
+            outline: auto;
+        }
+
+        :-moz-ui-invalid {
+            box-shadow: none;
+        }
+
+        progress {
+            vertical-align: baseline;
+        }
+
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+            height: auto;
+        }
+
+        [type="search"] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px;
+        }
+
+        ::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit;
+        }
+
+        summary {
+            display: list-item;
+        }
+
+        blockquote,
+        dd,
+        dl,
+        figure,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        p,
+        pre {
+            margin: 0;
+        }
+
+        fieldset {
+            margin: 0;
+        }
+
+        fieldset,
+        legend {
+            padding: 0;
+        }
+
+        menu,
+        ol,
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        dialog {
+            padding: 0;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #9ca3af;
+            opacity: 1;
+        }
+
+        [role="button"],
+        button {
+            cursor: pointer;
+        }
+
+        :disabled {
+            cursor: default;
+        }
+
+        audio,
+        canvas,
+        embed,
+        iframe,
+        img,
+        object,
+        svg,
+        video {
+            display: block;
+            vertical-align: middle;
+        }
+
+        img,
+        video {
+            height: auto;
+            max-width: 100%;
+        }
+
+        [hidden] {
+            display: none;
+        }
+
+        *,
+        :after,
+        :before {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgba(59, 130, 246, 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style: ;
+        }
+
+        ::backdrop {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgba(59, 130, 246, 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style: ;
+        }
+
+        #webcrumbs .pointer-events-none {
+            pointer-events: none;
+        }
+
+        #webcrumbs .fixed {
+            position: fixed;
+        }
+
+        #webcrumbs .absolute {
+            position: absolute;
+        }
+
+        #webcrumbs .relative {
+            position: relative;
+        }
+
+        #webcrumbs .inset-0 {
+            inset: 0;
+        }
+
+        #webcrumbs .bottom-10 {
+            bottom: 40px;
+        }
+
+        #webcrumbs .bottom-20 {
+            bottom: 80px;
+        }
+
+        #webcrumbs .bottom-6 {
+            bottom: 24px;
+        }
+
+        #webcrumbs .left-0 {
+            left: 0;
+        }
+
+        #webcrumbs .left-10 {
+            left: 40px;
+        }
+
+        #webcrumbs .left-20 {
+            left: 80px;
+        }
+
+        #webcrumbs .right-10 {
+            right: 40px;
+        }
+
+        #webcrumbs .right-20 {
+            right: 80px;
+        }
+
+        #webcrumbs .right-6 {
+            right: 24px;
+        }
+
+        #webcrumbs .top-0 {
+            top: 0;
+        }
+
+        #webcrumbs .top-10 {
+            top: 40px;
+        }
+
+        #webcrumbs .top-20 {
+            top: 80px;
+        }
+
+        #webcrumbs .z-10 {
+            z-index: 10;
+        }
+
+        #webcrumbs .z-50 {
+            z-index: 50;
+        }
+
+        #webcrumbs .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #webcrumbs .mb-10 {
+            margin-bottom: 40px;
+        }
+
+        #webcrumbs .mb-16 {
+            margin-bottom: 64px;
+        }
+
+        #webcrumbs .mb-3 {
+            margin-bottom: 12px;
+        }
+
+        #webcrumbs .mb-4 {
+            margin-bottom: 16px;
+        }
+
+        #webcrumbs .mb-6 {
+            margin-bottom: 24px;
+        }
+
+        #webcrumbs .mb-8 {
+            margin-bottom: 32px;
+        }
+
+        #webcrumbs .ml-1 {
+            margin-left: 4px;
+        }
+
+        #webcrumbs .mr-2 {
+            margin-right: 8px;
+        }
+
+        #webcrumbs .mr-4 {
+            margin-right: 16px;
+        }
+
+        #webcrumbs .mt-10 {
+            margin-top: 40px;
+        }
+
+        #webcrumbs .mt-12 {
+            margin-top: 48px;
+        }
+
+        #webcrumbs .mt-4 {
+            margin-top: 16px;
+        }
+
+        #webcrumbs .mt-6 {
+            margin-top: 24px;
+        }
+
+        #webcrumbs .flex {
+            display: flex;
+        }
+
+        #webcrumbs .grid {
+            display: grid;
+        }
+
+        #webcrumbs .hidden {
+            display: none;
+        }
+
+        #webcrumbs .h-14 {
+            height: 56px;
+        }
+
+        #webcrumbs .h-16 {
+            height: 64px;
+        }
+
+        #webcrumbs .h-2 {
+            height: 8px;
+        }
+
+        #webcrumbs .h-20 {
+            height: 80px;
+        }
+
+        #webcrumbs .h-40 {
+            height: 160px;
+        }
+
+        #webcrumbs .h-60 {
+            height: 240px;
+        }
+
+        #webcrumbs .h-80 {
+            height: 320px;
+        }
+
+        #webcrumbs .h-\[400px\] {
+            height: 400px;
+        }
+
+        #webcrumbs .h-full {
+            height: 100%;
+        }
+
+        #webcrumbs .w-14 {
+            width: 56px;
+        }
+
+        #webcrumbs .w-16 {
+            width: 64px;
+        }
+
+        #webcrumbs .w-2 {
+            width: 8px;
+        }
+
+        #webcrumbs .w-20 {
+            width: 80px;
+        }
+
+        #webcrumbs .w-40 {
+            width: 160px;
+        }
+
+        #webcrumbs .w-60 {
+            width: 240px;
+        }
+
+        #webcrumbs .w-80 {
+            width: 320px;
+        }
+
+        #webcrumbs .w-\[1280px\] {
+            width: 1280px;
+        }
+
+        #webcrumbs .w-full {
+            width: 100%;
+        }
+
+        #webcrumbs .max-w-2xl {
+            max-width: 42rem;
+        }
+
+        #webcrumbs .max-w-4xl {
+            max-width: 56rem;
+        }
+
+        #webcrumbs .max-w-6xl {
+            max-width: 72rem;
+        }
+
+        #webcrumbs .max-w-md {
+            max-width: 28rem;
+        }
+
+        #webcrumbs .transform {
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+        }
+
+        #webcrumbs .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        #webcrumbs .flex-row {
+            flex-direction: row;
+        }
+
+        #webcrumbs .flex-col {
+            flex-direction: column;
+        }
+
+        #webcrumbs .items-center {
+            align-items: center;
+        }
+
+        #webcrumbs .justify-center {
+            justify-content: center;
+        }
+
+        #webcrumbs .justify-between {
+            justify-content: space-between;
+        }
+
+        #webcrumbs .gap-4 {
+            gap: 16px;
+        }
+
+        #webcrumbs .gap-8 {
+            gap: 32px;
+        }
+
+        #webcrumbs :is(.space-x-4 > :not([hidden]) ~ :not([hidden])) {
+            --tw-space-x-reverse: 0;
+            margin-left: calc(16px * (1 - var(--tw-space-x-reverse)));
+            margin-right: calc(16px * var(--tw-space-x-reverse));
+        }
+
+        #webcrumbs :is(.space-x-6 > :not([hidden]) ~ :not([hidden])) {
+            --tw-space-x-reverse: 0;
+            margin-left: calc(24px * (1 - var(--tw-space-x-reverse)));
+            margin-right: calc(24px * var(--tw-space-x-reverse));
+        }
+
+        #webcrumbs :is(.space-x-8 > :not([hidden]) ~ :not([hidden])) {
+            --tw-space-x-reverse: 0;
+            margin-left: calc(32px * (1 - var(--tw-space-x-reverse)));
+            margin-right: calc(32px * var(--tw-space-x-reverse));
+        }
+
+        #webcrumbs :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
+            --tw-space-y-reverse: 0;
+            margin-bottom: calc(8px * var(--tw-space-y-reverse));
+            margin-top: calc(8px * (1 - var(--tw-space-y-reverse)));
+        }
+
+        #webcrumbs :is(.space-y-3 > :not([hidden]) ~ :not([hidden])) {
+            --tw-space-y-reverse: 0;
+            margin-bottom: calc(12px * var(--tw-space-y-reverse));
+            margin-top: calc(12px * (1 - var(--tw-space-y-reverse)));
+        }
+
+        #webcrumbs .overflow-hidden {
+            overflow: hidden;
+        }
+
+        #webcrumbs .rounded-full {
+            border-radius: 9999px;
+        }
+
+        #webcrumbs .rounded-lg {
+            border-radius: 24px;
+        }
+
+        #webcrumbs .rounded-xl {
+            border-radius: 36px;
+        }
+
+        #webcrumbs .rounded-l-lg {
+            border-bottom-left-radius: 24px;
+            border-top-left-radius: 24px;
+        }
+
+        #webcrumbs .rounded-r-lg {
+            border-bottom-right-radius: 24px;
+            border-top-right-radius: 24px;
+        }
+
+        #webcrumbs .border {
+            border-width: 1px;
+        }
+
+        #webcrumbs .border-t {
+            border-top-width: 1px;
+        }
+
+        #webcrumbs .border-slate-800 {
+            --tw-border-opacity: 1;
+            border-color: rgb(30 41 59 / var(--tw-border-opacity));
+        }
+
+        #webcrumbs .border-white\/30 {
+            border-color: hsla(0, 0%, 100%, 0.3);
+        }
+
+        #webcrumbs .bg-amber-300 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(252 211 77 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-indigo-100 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(224 231 255 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-indigo-500 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-orange-100 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(255 237 213 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-orange-500 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(249 115 22 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-slate-100 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-slate-50 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-slate-800 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-slate-900 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-white {
+            --tw-bg-opacity: 1;
+            background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .bg-gradient-to-r {
+            background-image: linear-gradient(to right, var(--tw-gradient-stops));
+        }
+
+        #webcrumbs .from-indigo-500 {
+            --tw-gradient-from: #6366f1 var(--tw-gradient-from-position);
+            --tw-gradient-to: rgba(99, 102, 241, 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+
+        #webcrumbs .from-orange-500 {
+            --tw-gradient-from: #f97316 var(--tw-gradient-from-position);
+            --tw-gradient-to: rgba(249, 115, 22, 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+
+        #webcrumbs .from-slate-900 {
+            --tw-gradient-from: #0f172a var(--tw-gradient-from-position);
+            --tw-gradient-to: rgba(15, 23, 42, 0) var(--tw-gradient-to-position);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        }
+
+        #webcrumbs .to-amber-500 {
+            --tw-gradient-to: #f59e0b var(--tw-gradient-to-position);
+        }
+
+        #webcrumbs .to-indigo-900 {
+            --tw-gradient-to: #312e81 var(--tw-gradient-to-position);
+        }
+
+        #webcrumbs .to-purple-500 {
+            --tw-gradient-to: #a855f7 var(--tw-gradient-to-position);
+        }
+
+        #webcrumbs .object-cover {
+            object-fit: cover;
+        }
+
+        #webcrumbs .p-2 {
+            padding: 8px;
+        }
+
+        #webcrumbs .p-3 {
+            padding: 12px;
+        }
+
+        #webcrumbs .p-8 {
+            padding: 32px;
+        }
+
+        #webcrumbs .px-10 {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        #webcrumbs .px-4 {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        #webcrumbs .px-6 {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        #webcrumbs .px-8 {
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+
+        #webcrumbs .py-12 {
+            padding-bottom: 48px;
+            padding-top: 48px;
+        }
+
+        #webcrumbs .py-2 {
+            padding-bottom: 8px;
+            padding-top: 8px;
+        }
+
+        #webcrumbs .py-20 {
+            padding-bottom: 80px;
+            padding-top: 80px;
+        }
+
+        #webcrumbs .py-3 {
+            padding-bottom: 12px;
+            padding-top: 12px;
+        }
+
+        #webcrumbs .py-4 {
+            padding-bottom: 16px;
+            padding-top: 16px;
+        }
+
+        #webcrumbs .py-6 {
+            padding-bottom: 24px;
+            padding-top: 24px;
+        }
+
+        #webcrumbs .pt-8 {
+            padding-top: 32px;
+        }
+
+        #webcrumbs .text-center {
+            text-align: center;
+        }
+
+        #webcrumbs .font-sans {
+            font-family:
+                Open Sans,
+                ui-sans-serif,
+                system-ui,
+                sans-serif,
+                Apple Color Emoji,
+                Segoe UI Emoji,
+                Segoe UI Symbol,
+                Noto Color Emoji;
+        }
+
+        #webcrumbs .text-2xl {
+            font-size: 24px;
+            line-height: 31.200000000000003px;
+        }
+
+        #webcrumbs .text-4xl {
+            font-size: 36px;
+            line-height: 41.4px;
+        }
+
+        #webcrumbs .text-5xl {
+            font-size: 48px;
+            line-height: 52.800000000000004px;
+        }
+
+        #webcrumbs .text-lg {
+            font-size: 18px;
+            line-height: 27px;
+        }
+
+        #webcrumbs .text-sm {
+            font-size: 14px;
+            line-height: 21px;
+        }
+
+        #webcrumbs .text-xl {
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        #webcrumbs .font-bold {
+            font-weight: 700;
+        }
+
+        #webcrumbs .font-medium {
+            font-weight: 500;
+        }
+
+        #webcrumbs .italic {
+            font-style: italic;
+        }
+
+        #webcrumbs .leading-tight {
+            line-height: 1.25;
+        }
+
+        #webcrumbs .text-amber-500 {
+            --tw-text-opacity: 1;
+            color: rgb(245 158 11 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-green-500 {
+            --tw-text-opacity: 1;
+            color: rgb(34 197 94 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-indigo-600 {
+            --tw-text-opacity: 1;
+            color: rgb(79 70 229 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-orange-500 {
+            --tw-text-opacity: 1;
+            color: rgb(249 115 22 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-orange-600 {
+            --tw-text-opacity: 1;
+            color: rgb(234 88 12 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-slate-400 {
+            --tw-text-opacity: 1;
+            color: rgb(148 163 184 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-slate-500 {
+            --tw-text-opacity: 1;
+            color: rgb(100 116 139 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-slate-600 {
+            --tw-text-opacity: 1;
+            color: rgb(71 85 105 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-slate-700 {
+            --tw-text-opacity: 1;
+            color: rgb(51 65 85 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-slate-800 {
+            --tw-text-opacity: 1;
+            color: rgb(30 41 59 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-white {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .text-white\/80 {
+            color: hsla(0, 0%, 100%, 0.8);
+        }
+
+        #webcrumbs .opacity-10 {
+            opacity: 0.1;
+        }
+
+        #webcrumbs .opacity-20 {
+            opacity: 0.2;
+        }
+
+        #webcrumbs .opacity-30 {
+            opacity: 0.3;
+        }
+
+        #webcrumbs .shadow-lg {
+            --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+        }
+
+        #webcrumbs .shadow-lg,
+        #webcrumbs .shadow-md {
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        }
+
+        #webcrumbs .shadow-md {
+            --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+        }
+
+        #webcrumbs .blur-3xl {
+            --tw-blur: blur(64px);
+        }
+
+        #webcrumbs .blur-3xl,
+        #webcrumbs .blur-\[100px\] {
+            filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+        }
+
+        #webcrumbs .blur-\[100px\] {
+            --tw-blur: blur(100px);
+        }
+
+        #webcrumbs .transition-all {
+            transition-duration: 0.15s;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #webcrumbs .transition-colors {
+            transition-duration: 0.15s;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #webcrumbs .duration-300 {
+            transition-duration: 0.3s;
+        }
+
+        #webcrumbs {
+            font-family: Open Sans !important;
+            font-size: 16px !important;
+        }
+
+        #webcrumbs .hover\:-translate-y-1:hover {
+            --tw-translate-y: -4px;
+        }
+
+        #webcrumbs .hover\:-translate-y-1:hover,
+        #webcrumbs .hover\:-translate-y-2:hover {
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+        }
+
+        #webcrumbs .hover\:-translate-y-2:hover {
+            --tw-translate-y: -8px;
+        }
+
+        #webcrumbs .hover\:bg-orange-600:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .hover\:bg-slate-200:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs .hover\:bg-white\/10:hover {
+            background-color: hsla(0, 0%, 100%, 0.1);
+        }
+
+        #webcrumbs .hover\:text-orange-600:hover {
+            --tw-text-opacity: 1;
+            color: rgb(234 88 12 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .hover\:text-white:hover {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity));
+        }
+
+        #webcrumbs .hover\:shadow-lg:hover {
+            --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+        }
+
+        #webcrumbs .hover\:shadow-lg:hover,
+        #webcrumbs .hover\:shadow-xl:hover {
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        }
+
+        #webcrumbs .hover\:shadow-xl:hover {
+            --tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+        }
+
+        #webcrumbs .hover\:shadow-orange-500\/20:hover {
+            --tw-shadow-color: rgba(249, 115, 22, 0.2);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        #webcrumbs .hover\:shadow-orange-500\/30:hover {
+            --tw-shadow-color: rgba(249, 115, 22, 0.3);
+            --tw-shadow: var(--tw-shadow-colored);
+        }
+
+        #webcrumbs .focus\:outline-none:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+
+        #webcrumbs .focus\:ring-2:focus {
+            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+        }
+
+        #webcrumbs .focus\:ring-orange-500:focus {
+            --tw-ring-opacity: 1;
+            --tw-ring-color: rgb(249 115 22 / var(--tw-ring-opacity));
+        }
+
+        #webcrumbs :is(.group:hover .group-hover\:bg-orange-500) {
+            --tw-bg-opacity: 1;
+            background-color: rgb(249 115 22 / var(--tw-bg-opacity));
+        }
+
+        #webcrumbs :is(.group:hover .group-hover\:text-white) {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity));
+        }
+
+        @media (min-width: 640px) {
+            #webcrumbs .sm\:flex-row {
+                flex-direction: row;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #webcrumbs .md\:mt-0 {
+                margin-top: 0;
+            }
+
+            #webcrumbs .md\:flex {
+                display: flex;
+            }
+
+            #webcrumbs .md\:w-1\/2 {
+                width: 50%;
+            }
+
+            #webcrumbs .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            #webcrumbs .md\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            #webcrumbs .md\:flex-row {
+                flex-direction: row;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #webcrumbs .lg\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        body {
+            line-height: inherit;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            overflow-x: hidden;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffffff, #d4d4d4);
+        }
+
+        .container {
+            max-width: 1480px;
+            width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="webcrumbs">
+        <div data-id="qIWw" class=" font-sans overflow-hidden">
+       
+            <div data-id="tXMH" class="bg-gradient-to-r from-slate-900 to-indigo-900 relative overflow-hidden">
+                <div class="container">
+               
+                <header data-id="xUQP" class="flex justify-between items-center py-6 px-10">
+                    <div data-id="81bD" class="flex items-center">
+                        <div data-id="lZa-" class="bg-orange-500 p-2 rounded-lg mr-2">
+                            <span data-id="ZYDn" class="material-symbols-outlined text-white">smart_toy</span>
+                        </div>
+                        <h1 data-id="6WEr" class="text-white text-2xl font-bold">Quotix</h1>
+                    </div>
+                    <nav data-id="l7eq" class="hidden md:flex space-x-8">
+                        <a data-id="_2EE" href="#" class="text-white/80 hover:text-white transition-colors">Home</a>
+                        <a data-id="hQMQ" href="#" class="text-white/80 hover:text-white transition-colors">Features</a>
+                        <a data-id="4MTN" href="#" class="text-white/80 hover:text-white transition-colors">Solutions</a>
+                        <a data-id="xV0m" href="#" class="text-white/80 hover:text-white transition-colors">Pricing</a>
+                        <a data-id="xEai" href="#" class="text-white/80 hover:text-white transition-colors">About</a>
+                    </nav>
+                    <button data-id="ougS"
+                        class="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-300 transform hover:-translate-y-1">
+                        Get Started
+                    </button>
+                </header>
+                <div data-id="P9hb" class="flex flex-col md:flex-row py-20 px-10">
+                    <div data-id="akJ2" class="md:w-1/2 z-10">
+                        <h2 data-id="Y7rM" class="text-5xl font-bold text-white leading-tight mb-6">
+                            Intelligent AI Solutions for Modern Business
+                        </h2>
+                        <p data-id="6EU7" class="text-white/80 text-lg mb-8 max-w-md">
+                            Transform your operations with custom AI tools that adapt to your unique business needs
+                            and amplify your team&#x27;s capabilities.
+                        </p>
+                        <div data-id="rmAl" class="flex flex-col sm:flex-row gap-4">
+                            <button data-id="G40S"
+                                class="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-lg hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 transform hover:-translate-y-1 font-medium">
+                                Explore AI Solutions
+                            </button>
+                            <button data-id="5qkW"
+                                class="border border-white/30 text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all duration-300">
+                                Watch Demo
+                            </button>
+                        </div>
+                    </div>
+                    <div data-id="TJtN" class="md:w-1/2 relative mt-10 md:mt-0">
+                        <div data-id="dIV-" class="relative z-10">
+                            <img data-id="3WTR"
+                                src="https://images.unsplash.com/photo-1516192518150-0d8fee5425e3?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzkyNDZ8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc0ODA5MDE2Nnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080"
+                                alt="AI visualization" class="rounded-xl object-cover h-[400px] w-full"
+                                keywords="artificial intelligence, neural network, technology, ai brain visualization" />
+                        </div>
+                        <div data-id="bDvq"
+                            class="absolute top-20 right-20 w-20 h-20 bg-orange-500 rounded-full blur-3xl opacity-30">
+                        </div>
+                        <div data-id="SfSd"
+                            class="absolute bottom-20 left-20 w-40 h-40 bg-indigo-500 rounded-full blur-3xl opacity-20">
+                        </div>
+                    </div>
+                </div>
+                <div data-id="DtGZ" class="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-31" style="
+                                            top: 24.00051919050974%;
+                                            left: 61.94866469149526%;
+                                            animation: float 8.15907710801792s infinite ease-in-out;
+                                        "></div>
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-34" style="
+                                            top: 67.82462471188056%;
+                                            left: 92.28491009593829%;
+                                            animation: float 11.934833452512693s infinite ease-in-out;
+                                        "></div>
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-67" style="
+                                            top: 81.65670190137267%;
+                                            left: 37.555997888443926%;
+                                            animation: float 6.520177832658192s infinite ease-in-out;
+                                        "></div>
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-48" style="
+                                            top: 96.00402773640046%;
+                                            left: 9.677942988447441%;
+                                            animation: float 10.51496550522957s infinite ease-in-out;
+                                        "></div>
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-71" style="
+                                            top: 40.209940015937306%;
+                                            left: 22.655183561373516%;
+                                            animation: float 5.296109134870503s infinite ease-in-out;
+                                        "></div>
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-40" style="
+                                            top: 91.46724761997758%;
+                                            left: 38.92507245093799%;
+                                            animation: float 13.16210192368918s infinite ease-in-out;
+                                        "></div>
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-56" style="
+                                            top: 90.73434707271623%;
+                                            left: 5.6555440665326255%;
+                                            animation: float 5.196651086252287s infinite ease-in-out;
+                                        "></div>
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-35" style="
+                                            top: 67.86737089308478%;
+                                            left: 83.00984379756002%;
+                                            animation: float 5.165564403904308s infinite ease-in-out;
+                                        "></div>
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-73" style="
+                                            top: 44.28034522578034%;
+                                            left: 75.12874291312819%;
+                                            animation: float 9.168674486096727s infinite ease-in-out;
+                                        "></div>
+                    <div data-id="TUS2" class="absolute w-2 h-2 rounded-full bg-amber-300 opacity-78" style="
+                                            top: 87.42031174038306%;
+                                            left: 32.31634477462709%;
+                                            animation: float 12.000983051419967s infinite ease-in-out;
+                                        "></div>
+                </div>
+            </div>
+
+         </div>
+            <div data-id="Rsny" class="bg-white py-20 px-10">
+                <div data-id="2Azu" class="text-center mb-16">
+                    <span data-id="EcTv"
+                        class="bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-medium">Our
+                        Features</span>
+                    <h2 data-id="qKbg" class="text-4xl font-bold mt-6 mb-4">AI-Powered Solutions</h2>
+                    <p data-id="v37S" class="text-slate-600 max-w-2xl mx-auto">
+                        Discover how our intelligent tools can transform your workflow and boost productivity.
+                    </p>
+                </div>
+                <div data-id="6Mbk" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div data-id="8ymB"
+                        class="bg-slate-50 p-8 rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                        <div data-id="3-Ai"
+                            class="bg-orange-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors duration-300">
+                            <span data-id="1jJh"
+                                class="material-symbols-outlined text-orange-600 group-hover:text-white transition-colors duration-300">
+                                auto_awesome
+                            </span>
+                        </div>
+                        <h3 data-id="SCox" class="text-xl font-bold mb-3">Smart Automation</h3>
+                        <p data-id="0BQa" class="text-slate-600 mb-6">
+                            Automate repetitive tasks and workflows with intelligent AI that learns and adapts to
+                            your processes.
+                        </p>
+                        <a data-id="8txw" href="#"
+                            class="text-orange-500 font-medium flex items-center hover:text-orange-600 transition-colors">
+                            Learn more
+                            <span data-id="wwgD" class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div data-id="K7Ol"
+                        class="bg-slate-50 p-8 rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                        <div data-id="FXAT"
+                            class="bg-orange-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors duration-300">
+                            <span data-id="4An2"
+                                class="material-symbols-outlined text-orange-600 group-hover:text-white transition-colors duration-300">
+                                insights
+                            </span>
+                        </div>
+                        <h3 data-id="_76Y" class="text-xl font-bold mb-3">Data Analytics</h3>
+                        <p data-id="EidE" class="text-slate-600 mb-6">
+                            Turn your raw data into actionable insights with powerful AI-driven analytics and
+                            visualization tools.
+                        </p>
+                        <a data-id="-AwU" href="#"
+                            class="text-orange-500 font-medium flex items-center hover:text-orange-600 transition-colors">
+                            Learn more
+                            <span data-id="9V5h" class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div data-id="3PE6"
+                        class="bg-slate-50 p-8 rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                        <div data-id="V6jm"
+                            class="bg-orange-100 w-14 h-14 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors duration-300">
+                            <span data-id="9D8d"
+                                class="material-symbols-outlined text-orange-600 group-hover:text-white transition-colors duration-300">
+                                psychology
+                            </span>
+                        </div>
+                        <h3 data-id="9pFU" class="text-xl font-bold mb-3">Intelligent Assistant</h3>
+                        <p data-id="7dlc" class="text-slate-600 mb-6">
+                            Get personalized recommendations and assistance from our AI that understands your
+                            business context.
+                        </p>
+                        <a data-id="oFjk" href="#"
+                            class="text-orange-500 font-medium flex items-center hover:text-orange-600 transition-colors">
+                            Learn more
+                            <span data-id="ktpf" class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div data-id="QbRQ" class="bg-slate-50 py-20 px-10">
+                <div data-id="DLNj" class="text-center mb-16">
+                    <span data-id="zpSM"
+                        class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-medium">Solutions</span>
+                    <h2 data-id="jNz5" class="text-4xl font-bold mt-6 mb-4">Tailored for Your Industry</h2>
+                    <p data-id="3cbP" class="text-slate-600 max-w-2xl mx-auto">
+                        Our AI solutions are customized to meet the specific needs of various industries.
+                    </p>
+                </div>
+                <div data-id="7I3f" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <div data-id="QxTf"
+                        class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                        <div data-id="j9Xz"
+                            class="bg-gradient-to-r from-orange-500 to-amber-500 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
+                            <span data-id="hQAD" class="material-symbols-outlined text-white text-2xl">
+                                business
+                            </span>
+                        </div>
+                        <h3 data-id="YF5i" class="text-2xl font-bold mb-3">Enterprise Solutions</h3>
+                        <p data-id="8nC6" class="text-slate-600 mb-6">
+                            Comprehensive AI tools designed for large organizations to streamline operations and
+                            enhance decision-making.
+                        </p>
+                        <ul data-id="YhXH" class="space-y-3 mb-8">
+                            <li data-id="U5vY" class="flex items-center text-slate-700">
+                                <span data-id="tn1m"
+                                    class="material-symbols-outlined text-green-500 mr-2">check_circle</span>
+                                Workflow optimization
+                            </li>
+                            <li data-id="oequ" class="flex items-center text-slate-700">
+                                <span data-id="yxBv"
+                                    class="material-symbols-outlined text-green-500 mr-2">check_circle</span>
+                                Advanced analytics dashboard
+                            </li>
+                            <li data-id="bTFi" class="flex items-center text-slate-700">
+                                <span data-id="DV0d"
+                                    class="material-symbols-outlined text-green-500 mr-2">check_circle</span>
+                                Enterprise-grade security
+                            </li>
+                        </ul>
+                        <button data-id="5Nyl"
+                            class="bg-slate-100 text-slate-800 px-6 py-3 rounded-lg hover:bg-slate-200 transition-colors w-full">
+                            Explore Enterprise Solutions
+                        </button>
+                    </div>
+                    <div data-id="n2WY"
+                        class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                        <div data-id="BrhX"
+                            class="bg-gradient-to-r from-indigo-500 to-purple-500 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
+                            <span data-id="cgmF" class="material-symbols-outlined text-white text-2xl">
+                                storefront
+                            </span>
+                        </div>
+                        <h3 data-id="50rv" class="text-2xl font-bold mb-3">Small Business Tools</h3>
+                        <p data-id="mM2E" class="text-slate-600 mb-6">
+                            Affordable and scalable AI solutions that help small businesses compete with larger
+                            enterprises.
+                        </p>
+                        <ul data-id="4KvL" class="space-y-3 mb-8">
+                            <li data-id="rRhh" class="flex items-center text-slate-700">
+                                <span data-id="YMlz"
+                                    class="material-symbols-outlined text-green-500 mr-2">check_circle</span>
+                                Customer insights
+                            </li>
+                            <li data-id="LOYd" class="flex items-center text-slate-700">
+                                <span data-id="xeo6"
+                                    class="material-symbols-outlined text-green-500 mr-2">check_circle</span>
+                                Marketing automation
+                            </li>
+                            <li data-id="Pdmo" class="flex items-center text-slate-700">
+                                <span data-id="lu0Q"
+                                    class="material-symbols-outlined text-green-500 mr-2">check_circle</span>
+                                Cost-effective implementation
+                            </li>
+                        </ul>
+                        <button data-id="LSNf"
+                            class="bg-slate-100 text-slate-800 px-6 py-3 rounded-lg hover:bg-slate-200 transition-colors w-full">
+                            Explore Small Business Tools
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div data-id="6tyT" class="bg-white py-20 px-10">
+                <div data-id="GpTl" class="text-center mb-16">
+                    <span data-id="tT5X"
+                        class="bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-medium">Testimonials</span>
+                    <h2 data-id="GYRH" class="text-4xl font-bold mt-6 mb-4">What Our Clients Say</h2>
+                    <p data-id="e1hS" class="text-slate-600 max-w-2xl mx-auto">
+                        Hear from businesses that have transformed their operations with our AI solutions.
+                    </p>
+                </div>
+                <div data-id="O0PO" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div data-id="i5ms" class="bg-slate-50 p-8 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div data-id="IOTN" class="flex items-center mb-6">
+                            <img data-id="FlIr"
+                                src="https://images.unsplash.com/photo-1664575602554-2087b04935a5?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzkyNDZ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHdvbWFufGVufDB8fHx8MTc0ODA5MDI1OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080"
+                                alt="Customer" class="w-14 h-14 rounded-full mr-4"
+                                keywords="business woman, professional, portrait" />
+                            <div data-id="2YRz">
+                                <h4 data-id="MV6q" class="font-bold">Sarah Johnson</h4>
+                                <p data-id="2SJZ" class="text-slate-600 text-sm">Marketing Director, TechCorp</p>
+                            </div>
+                        </div>
+                        <p data-id="zOD0" class="text-slate-700 italic">
+                            &quot;The AI-powered analytics platform has completely transformed how we approach
+                            marketing campaigns. We&#x27;ve seen a 40% increase in conversion rates.&quot;
+                        </p>
+                        <div data-id="nGrX" class="flex mt-4">
+                            <span data-id="okSw" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="2cyH" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="vJQE" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="2A85" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="VTo0" class="material-symbols-outlined text-amber-500">star</span>
+                        </div>
+                    </div>
+                    <div data-id="I1cn" class="bg-slate-50 p-8 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div data-id="L7dK" class="flex items-center mb-6">
+                            <img data-id="C99j"
+                                src="https://images.unsplash.com/photo-1541535881962-3bb380b08458?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzkyNDZ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1hbnxlbnwwfHx8fDE3NDgwOTAyODF8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080"
+                                alt="Customer" class="w-14 h-14 rounded-full mr-4"
+                                keywords="business man, professional, portrait" />
+                            <div data-id="Hnzg">
+                                <h4 data-id="qhF_" class="font-bold">Michael Chen</h4>
+                                <p data-id="ielk" class="text-slate-600 text-sm">CTO, GrowthLabs</p>
+                            </div>
+                        </div>
+                        <p data-id="hvFt" class="text-slate-700 italic">
+                            &quot;Implementing Quotix&#x27;s AI solution was seamless. Their team provided
+                            exceptional support, and our development workflow is now twice as efficient.&quot;
+                        </p>
+                        <div data-id="y89c" class="flex mt-4">
+                            <span data-id="B1ar" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="okhz" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="aYUH" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="55Rk" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="2HJ0" class="material-symbols-outlined text-amber-500">star_half</span>
+                        </div>
+                    </div>
+                    <div data-id="2PqY" class="bg-slate-50 p-8 rounded-xl hover:shadow-lg transition-all duration-300">
+                        <div data-id="t22g" class="flex items-center mb-6">
+                            <img data-id="_Z08"
+                                src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzkyNDZ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHdvbWFufGVufDB8fHx8MTc0ODA5MDI1OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080"
+                                alt="Customer" class="w-14 h-14 rounded-full mr-4"
+                                keywords="business woman, professional, portrait" />
+                            <div data-id="-Ml4">
+                                <h4 data-id="QT1K" class="font-bold">Elena Rodriguez</h4>
+                                <p data-id="Ar4B" class="text-slate-600 text-sm">CEO, InnovateNow</p>
+                            </div>
+                        </div>
+                        <p data-id="FuFO" class="text-slate-700 italic">
+                            &quot;As a small business, we needed an affordable AI solution that could grow with us.
+                            Quotix delivered exactly what we needed and more.&quot;
+                        </p>
+                        <div data-id="GHd1" class="flex mt-4">
+                            <span data-id="17c2" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="71XB" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="JnDs" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="V5tX" class="material-symbols-outlined text-amber-500">star</span>
+                            <span data-id="s_YQ" class="material-symbols-outlined text-amber-500">star</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-id="vO7-"
+                class="bg-gradient-to-r from-slate-900 to-indigo-900 py-20 px-10 relative overflow-hidden">
+                <div data-id="FdXc" class="max-w-4xl mx-auto text-center relative z-10">
+                    <h2 data-id="oXqH" class="text-4xl font-bold text-white mb-6">
+                        Ready to Transform Your Business?
+                    </h2>
+                    <p data-id="T2-f" class="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+                        Join hundreds of businesses that are leveraging our AI solutions to stay ahead of the
+                        competition.
+                    </p>
+                    <div data-id="u72N" class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button data-id="KNUu"
+                            class="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-lg hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 transform hover:-translate-y-1 font-medium">
+                            Get Started Now
+                        </button>
+                        <button data-id="7nts"
+                            class="border border-white/30 text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all duration-300">
+                            Schedule a Demo
+                        </button>
+                    </div>
+                </div>
+                <div data-id="4Tjh" class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                    <div data-id="rPcR"
+                        class="absolute top-10 right-10 w-60 h-60 bg-orange-500 rounded-full blur-[100px] opacity-10">
+                    </div>
+                    <div data-id="bJKN"
+                        class="absolute bottom-10 left-10 w-80 h-80 bg-indigo-500 rounded-full blur-[100px] opacity-10">
+                    </div>
+                </div>
+            </div>
+            <footer data-id="cw8B" class="bg-slate-900 text-white py-12 px-10">
+                <div data-id="b4Qn" class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <div data-id="e02T">
+                        <div data-id="-epp" class="flex items-center mb-6">
+                            <div data-id="MCG3" class="bg-orange-500 p-2 rounded-lg mr-2">
+                                <span data-id="6v4u" class="material-symbols-outlined text-white">smart_toy</span>
+                            </div>
+                            <h3 data-id="4AsP" class="text-xl font-bold">Quotix</h3>
+                        </div>
+                        <p data-id="drh4" class="text-slate-400 mb-6">
+                            Transforming businesses with intelligent AI solutions that adapt to your unique needs.
+                        </p>
+                        <div data-id="lWlr" class="flex space-x-4">
+                            <a data-id="m-tm" href="#" class="text-slate-400 hover:text-white transition-colors">
+                                <i data-id="xRK2" class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a data-id="Kmo0" href="#" class="text-slate-400 hover:text-white transition-colors">
+                                <i data-id="ya0A" class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a data-id="XGGo" href="#" class="text-slate-400 hover:text-white transition-colors">
+                                <i data-id="NkSP" class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a data-id="72jw" href="#" class="text-slate-400 hover:text-white transition-colors">
+                                <i data-id="m-Xs" class="fa-brands fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div data-id="c9qr">
+                        <h4 data-id="Iuf8" class="font-bold text-lg mb-4">Solutions</h4>
+                        <ul data-id="JhWN" class="space-y-2">
+                            <li data-id="cVW0">
+                                <a data-id="4BpL" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">Enterprise AI</a>
+                            </li>
+                            <li data-id="2wbd">
+                                <a data-id="fsJ8" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">Small Business Tools</a>
+                            </li>
+                            <li data-id="n7ld">
+                                <a data-id="yxxn" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">Data Analytics</a>
+                            </li>
+                            <li data-id="rSN9">
+                                <a data-id="1kV0" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">Workflow Automation</a>
+                            </li>
+                            <li data-id="3vsY">
+                                <a data-id="f0kL" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">Custom Development</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-id="ynim">
+                        <h4 data-id="nI3c" class="font-bold text-lg mb-4">Company</h4>
+                        <ul data-id="aivI" class="space-y-2">
+                            <li data-id="i6_f">
+                                <a data-id="Fhci" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">About Us</a>
+                            </li>
+                            <li data-id="6IPj">
+                                <a data-id="XsAm" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">Careers</a>
+                            </li>
+                            <li data-id="6TQ3">
+                                <a data-id="Ex3s" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">Blog</a>
+                            </li>
+                            <li data-id="SwEK">
+                                <a data-id="k5pJ" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">Press</a>
+                            </li>
+                            <li data-id="WQVs">
+                                <a data-id="caS7" href="#"
+                                    class="text-slate-400 hover:text-white transition-colors">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-id="338W">
+                        <h4 data-id="dbxD" class="font-bold text-lg mb-4">Subscribe</h4>
+                        <p data-id="AbV_" class="text-slate-400 mb-4">
+                            Stay updated with the latest in AI technology and business solutions.
+                        </p>
+                        <div data-id="zNYF" class="flex">
+                            <input data-id="LRmj" type="email" placeholder="Your email"
+                                class="bg-slate-800 text-white px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-orange-500 w-full" />
+                            <button data-id="2LFT"
+                                class="bg-orange-500 px-4 py-3 rounded-r-lg hover:bg-orange-600 transition-colors">
+                                <span data-id="uQ8X" class="material-symbols-outlined">send</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div data-id="LH5D" class="border-t border-slate-800 mt-12 pt-8 max-w-6xl mx-auto">
+                    <div data-id="g1O9" class="flex flex-col md:flex-row justify-between items-center">
+                        <p data-id="OPgR" class="text-slate-500 text-sm">© 2023 Quotix. All rights reserved.</p>
+                        <div data-id="9pYC" class="flex space-x-6 mt-4 md:mt-0">
+                            <a data-id="S44X" href="#"
+                                class="text-slate-500 text-sm hover:text-white transition-colors">Privacy Policy</a>
+                            <a data-id="7RNm" href="#"
+                                class="text-slate-500 text-sm hover:text-white transition-colors">Terms of Service</a>
+                            <a data-id="bRdo" href="#"
+                                class="text-slate-500 text-sm hover:text-white transition-colors">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <button data-id="sU__"
+                class="fixed bottom-6 right-6 bg-orange-500 text-white p-3 rounded-full shadow-lg hover:bg-orange-600 transition-colors z-50">
+                <span data-id="TIFg" class="material-symbols-outlined">arrow_upward</span>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
